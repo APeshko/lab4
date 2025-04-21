@@ -1,3 +1,4 @@
+// utils.h
 #include <sstream>
 #include <type_traits>
 #include <vector>
@@ -12,11 +13,11 @@ void mySwap(T& a, T& b) {
 }
 
 template <typename Container>
-std::string containerToString(const Container& cont) {
+std::string containerToString(const Container& c) {
     std::ostringstream oss;
     oss << "[";
     bool first = true;
-    for (const auto& item : cont) {
+    for (const auto& item : c) {
         if (!first) oss << ", ";
         oss << item;
         first = false;
