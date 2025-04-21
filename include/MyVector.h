@@ -35,3 +35,28 @@ public:
     void reserve(size_t newCapacity);
     void push_back(const T& value);
 };
+
+// Move конструктор
+template <typename T>
+MyVector<T>::MyVector(MyVector&& other) noexcept 
+    : data(other.data), size(other.size), capacity(other.capacity) {
+    other.data = nullptr;
+    other.size = 0;
+    other.capacity = 0;
+}
+
+// Move оператор присваивания
+template <typename T>
+MyVector<T>& MyVector<T>::operator=(MyVector&& other) noexcept {
+    if (this != &other) {
+        delete[] data;
+        data = other.data;
+        size = other.size;
+        capacity = other.capacity;
+        
+        other.data = nullptr;
+        other.size = 0;
+        other.capacity = 0;
+    }
+    return *this;
+}
