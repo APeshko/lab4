@@ -1,4 +1,4 @@
-#ifndef MY_VECTOR_H  // Защита от повторного включения
+#ifndef MY_VECTOR_H 
 #define MY_VECTOR_H
 
 #include <algorithm> // Для std::copy
