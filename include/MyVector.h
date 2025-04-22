@@ -1,7 +1,7 @@
 #ifndef MY_VECTOR_H 
 #define MY_VECTOR_H
 
-#include <algorithm> // Для std::copy
+#include <algorithm> 
 #include <initializer_list> // Для списковой инициализации
 #include <utility>   // Для std::move
 
@@ -9,12 +9,10 @@ template <typename T>
 class MyVector { //шаблонный класс хранящий тип Т
 private:
     T* data;        //  указатель на массив элементов.
-    size_t size;    // Текущее количество элементов
-    size_t capacity; // Общий размер выделенной памяти
+    size_t size;    // текущее количество элементов
+    size_t capacity; // общий размер выделенной памяти
 
 public:
-    // 1. Конструкторы --------------------------------------------------------
-    
     // Конструктор по умолчанию (пустой вектор)
     MyVector() : data(nullptr), size(0), capacity(0) {}
     
@@ -28,14 +26,11 @@ public:
         std::copy(init.begin(), init.end(), data); // Копируем элементы
     }
     
-    // 2. Деструктор ----------------------------------------------------------
     ~MyVector() {
-        delete[] data; // Освобождаем память
+        delete[] data;
     }
-    
-    // 3. Копирующие операции -------------------------------------------------
-    
-    // Конструктор копирования (глубокое копирование)
+       
+    // Конструктор копирования
     MyVector(const MyVector& other) 
         : data(new T[other.capacity]), size(other.size), capacity(other.capacity) {
         std::copy(other.data, other.data + size, data);
@@ -46,7 +41,7 @@ public:
         if (this != &other) { // Защита от самоприсваивания
             delete[] data; // Удаляем старые данные
             
-            data = new T[other.capacity]; // Выделяем новую память
+            data = new T[other.capacity]; // Выдел новую память
             size = other.size;
             capacity = other.capacity;
             std::copy(other.data, other.data + size, data);
@@ -54,9 +49,9 @@ public:
         return *this;
     }
     
-    // 4. Перемещающие операции -----------------------------------------------
+    //перемещ операции
     
-    // Move-конструктор (noexcept для оптимизации)
+    // move-конструктор
     MyVector(MyVector&& other) noexcept 
         : data(other.data), size(other.size), capacity(other.capacity) {
         other.data = nullptr; // "Обнуляем" исходный объект
@@ -64,7 +59,7 @@ public:
         other.capacity = 0;
     }
     
-    // Move-оператор присваивания
+    // move-оператор присваивания
     MyVector& operator=(MyVector&& other) noexcept {
         if (this != &other) {
             delete[] data; // Освобождаем текущие ресурсы
@@ -74,7 +69,7 @@ public:
             size = other.size;
             capacity = other.capacity;
             
-            // Обнуляем исходный объект
+            // обнуление
             other.data = nullptr;
             other.size = 0;
             other.capacity = 0;
@@ -82,7 +77,7 @@ public:
         return *this;
     }
     
-    // 5. Методы доступа ------------------------------------------------------
+    // методы доступа
     
     T& operator[](size_t index) {
         return data[index]; // Доступ без проверки границ (как в std::vector)
@@ -95,7 +90,7 @@ public:
     size_t getSize() const { return size; }
     size_t getCapacity() const { return capacity; }
     
-    // 6. Управление памятью --------------------------------------------------
+    // управление памятью
     
     void reserve(size_t newCapacity) {
         if (newCapacity > capacity) {
