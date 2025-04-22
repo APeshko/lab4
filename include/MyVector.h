@@ -94,9 +94,9 @@ public:
     
     void reserve(size_t newCapacity) {
         if (newCapacity > capacity) {
-            T* newData = new T[newCapacity]; // Новая память
-            std::copy(data, data + size, newData); // Копируем элементы
-            delete[] data; // Удаляем старую память
+            T* newData = new T[newCapacity]; // new память
+            std::copy(data, data + size, newData); // copir элементы
+            delete[] data; // удал старую память
             data = newData;
             capacity = newCapacity;
         }
@@ -104,7 +104,7 @@ public:
     
     void push_back(const T& value) {
         if (size == capacity) {
-            reserve(capacity == 0 ? 1 : capacity * 2); // Увеличиваем емкость
+            reserve(capacity == 0 ? 1 : capacity * 2); // увеличи емкость
         }
         data[size++] = value; // Добавляем элемент
     }
