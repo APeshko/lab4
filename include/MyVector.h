@@ -6,9 +6,9 @@
 #include <utility>   // Для std::move
 
 template <typename T>
-class MyVector {
+class MyVector { //шаблонный класс хранящий тип Т
 private:
-    T* data;        // Указатель на динамический массив элементов
+    T* data;        //  указатель на массив элементов.
     size_t size;    // Текущее количество элементов
     size_t capacity; // Общий размер выделенной памяти
 
