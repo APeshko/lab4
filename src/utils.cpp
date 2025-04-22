@@ -8,9 +8,9 @@
 
 template <typename T>
 void mySwap(T& a, T& b) {
-    T temp = a; // Сохраняем значение a
-    a = b;      // Присваиваем значение b a
-    b = temp;   // Обновляем b временным значением
+    T temp = a; 
+    a = b;      
+    b = temp;  
 }
 
 template <typename Container>
