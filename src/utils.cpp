@@ -27,13 +27,18 @@ std::string container_to_string(const Container& container) {
 }
 
 int main() {
-    // Пример 
-    int x = 10, y = 20;
-    std::cout << "Before swap: x = " << x << ", y = " << y << std::endl;
-    mySwap(x, y);
-    std::cout << "After swap: x = " << x << ", y = " << y << std::endl;
+    // Пример с вектором
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    std::cout << "Vector to string: " << container_to_string(vec) << std::endl;
 
-    std::string str1 = "Hello", str2 = "World";
-    std::cout << "Before swap: str1 = " << str1 << ", str2 = " << str2 << std::endl;
-    my
+    // Пример со списком
+    std::list<std::string> lst = {"Hi", "oWn", "from", "Doll"};
+    std::cout << "List to string: " << container_to_string(lst) << std::endl;
+
+    // Пример с множеством
+    std::set<char> mySet = {'a', 'b', 'c', 'd'};
+    std::cout << "Set to string: " << container_to_string(mySet) << std::endl;
+
+    return 0;
+}
 
