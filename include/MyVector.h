@@ -13,14 +13,9 @@ private:
     size_t capacity; // общий размер выделенной памяти
 
 public:
-    // Конструктор по умолчанию (пустой вектор)
     MyVector() : data(nullptr), size(0), capacity(0) {}
-    
-    // Конструктор с заданным размером
     explicit MyVector(size_t n) 
-        : data(new T[n]), size(n), capacity(n) {} // Выделяем память сразу
-    
-    // Конструктор из списка инициализации {1, 2, 3}
+        : data(new T[n]), size(n), capacity(n) {} 
     MyVector(std::initializer_list<T> init) 
         : data(new T[init.size()]), size(init.size()), capacity(init.size()) {
         std::copy(init.begin(), init.end(), data); // Копируем элементы
