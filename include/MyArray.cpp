@@ -5,12 +5,12 @@
 template <typename T, size_t Size>
 class MyArray {
 private:
-    T data[Size]; // Статический массив фиксированного размера
+    T data[Size]; // static м size=const
 
 public:
-    // Конструктор по умолчанию (не требуется для статического массива)
+    // Конструктор по умолчанию не нужен для статического м? да
 
-    // Метод для доступа к элементам массива
+    // М для доступа к элементам м
     T& operator[](size_t index) {
         if (index >= Size) {
             throw std::out_of_range("Index out of range");
@@ -18,7 +18,7 @@ public:
         return data[index];
     }
 
-    // Константный метод доступа для чтения элементов массива
+    // Конст метод доступа для чтения элементов м
     const T& operator[](size_t index) const {
         if (index >= Size) {
             throw std::out_of_range("Index out of range");
